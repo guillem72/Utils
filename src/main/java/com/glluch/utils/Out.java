@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.glluch.utils;
 
 import java.util.List;
@@ -56,5 +51,13 @@ public class Out {
         }
         System.out.println(res);
         return res;
+    }
+    
+    public static void p(Object o){
+        System.out.println(o.toString());
+    }
+    
+    public static void typeOf(Object o){
+        p(Obj.typeOf(o));
     }
 }
