@@ -11,7 +11,12 @@ package com.glluch.utils;
  */
 public class Obj {
  public static String typeOf(Object obj) {
-    Class cls = obj.getClass();
-    return cls.getName();
+     Class cls = obj.getClass();
+     return cls.getName();
 }   
+ 
+ public static String showTypeOf(Object obj){
+     Out.p(typeOf(obj));
+     return typeOf(obj);
+ }
 }

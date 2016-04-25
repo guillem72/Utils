@@ -1,5 +1,6 @@
 package com.glluch.utils;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -38,6 +39,23 @@ public class Out {
         return res;
     }
     
+    public static String smsd(Map <String, HashMap <String,Double>> map){
+         String res="";
+        
+        int i=0;
+        Set keys=map.keySet();
+          for (Object t0:keys){
+            String t=(String) t0;
+            i++;
+              if (i!=1) res+=System.lineSeparator();
+           res+=System.lineSeparator()+t+System.lineSeparator();
+           res+="------------------------------------"+System.lineSeparator();
+               res+=   stringdoublemap(map.get(t));
+          }
+           System.out.println(res);
+        return res;
+    }
+    
     public static String stringdoublemap(Map <String,Double> map){
         String res="";
         
@@ -47,7 +65,7 @@ public class Out {
             String t=(String) t0;
             i++;
             if (i!=1) res+=System.lineSeparator();
-            res+=t+sep+map.get(t)+System.lineSeparator();
+            res+=t+sep+map.get(t);
         }
         System.out.println(res);
         return res;
