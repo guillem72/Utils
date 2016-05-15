@@ -23,11 +23,10 @@
  */
 package com.glluch.utils;
 
-import com.glluch.utils.Init;
-import com.glluch.utils.Out;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Set;
 import org.apache.commons.io.FileUtils;
@@ -45,15 +44,29 @@ public class CsvWriter {
     private int numFields;
     private File target;
 
-    public void writeTableTitles(Table table) throws IOException{
+    public void writeTableWithNames(Table table) throws IOException{
         Set heads=table.getHeaders().keySet();
         ArrayList<String> h=new ArrayList<>();
         h.add("RowName");
         h.addAll(heads);
         writeHeader(h);
-        Set rowsNames=table.getRowId().keySet();
+        Set rowsNames=table.getRowIds().keySet();
+        for (Object row0:rowsNames){
+            String rowName=(String) row0;
+            HashMap<Integer, Double> row = table.getRow(rowName);
+            h=new ArrayList<>();
+            h.add(rowName);
+            h.addAll(JMap.valuesD2string(row.values()));
+            writeRowFromStrings(h);
+        }
          
         
+    }
+    
+    public void writeRowFromStrings(Collection<String> vals) throws IOException{
+        String row = StringUtils.join(vals, ",") + System.lineSeparator();
+        FileUtils.write(target, row, true);
+    
     }
     
     
@@ -67,7 +80,7 @@ public class CsvWriter {
         FileUtils.write(target, row, false);
     }
 
-    public void writeRow(ArrayList<Double> nums) throws IOException {
+    public void writeRow(Collection<Double> nums) throws IOException {
         String row = StringUtils.join(nums, ",") + System.lineSeparator();
         FileUtils.write(target, row, true);
 
@@ -89,6 +102,14 @@ public class CsvWriter {
         }
         String row = StringUtils.join(nums, ",") + System.lineSeparator();
         FileUtils.write(target, row, true);
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
     
     

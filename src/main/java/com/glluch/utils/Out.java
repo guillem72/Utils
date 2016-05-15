@@ -1,5 +1,6 @@
 package com.glluch.utils;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,7 +13,7 @@ import java.util.Set;
 public class Out {
     public static String sep=" ---> ";
     
-    public static String stringlist(List <String> terms){
+    public static String stringlist(Collection <String> terms){
         String res="";
         int i=0;
         for (String t:terms){
@@ -72,10 +73,18 @@ public class Out {
     }
     
     public static void p(Object o){
+        if (o!=null)
         System.out.println(o.toString());
+        else System.out.println("null");
+    }
+    
+    public static void p(){
+        System.out.println();
     }
     
     public static void typeOf(Object o){
         p(Obj.typeOf(o));
     }
+    
+    
 }

@@ -18,8 +18,8 @@ public class Main {
 
     public static void main(String[] args) throws IOException   {
     //name();
-    //testcsvwrite();
-    testTable();
+    testcsvwrite();
+    //testTable();
     
      }
 
@@ -45,7 +45,7 @@ public class Main {
         cw.writeRow(n);
     }
 
-    private static void testTable() {
+    private static void testTable() throws IOException {
         CsvWriter cw=new CsvWriter();
         Table table=new Table();
        ArrayList<String> h=new ArrayList <>();
@@ -60,6 +60,12 @@ public class Main {
          row.put("A1",-0.7);
         row.put("A2",0.08);
         table.addRow("r2", row);
+        
+        HashMap<String, Double> col=new HashMap<>();
+        col.put("r1", -0.01);
+        col.put("r2",1.1);
+        table.addCol("A3",col);
+        cw.writeTableWithNames(table);
     }
     
 }

@@ -6,6 +6,7 @@
 package com.glluch.utils;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Set;
 import org.apache.commons.lang3.math.NumberUtils;
@@ -36,6 +37,14 @@ public class JMap {
         
         
         return hm;
+    }
+    
+    public static ArrayList<String> valuesD2string(Collection<Double> ds){
+        ArrayList<String> res=new ArrayList<>();
+        for (Double d:ds){
+            res.add(d.toString());
+        }
+        return res;
     }
     
     public static ArrayList<String> keys2array(HashMap <String, Integer> map){
