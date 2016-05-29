@@ -1,5 +1,6 @@
 package com.glluch.utils;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -12,6 +13,21 @@ import java.util.Set;
  */
 public class Out {
     public static String sep=" ---> ";
+    
+    
+    public static String msas(Map<String, ArrayList<String>> map){
+        String res="";
+         Set keys=map.keySet();
+          int i=0;
+        for (Object t0:keys){
+            String t=(String) t0;
+            i++;
+            if (i!=1) res+=System.lineSeparator();
+            res+=t+sep+stringlist(map.get(t))+System.lineSeparator();
+        }
+        System.out.println(res);
+        return res;
+    }
     
     public static String stringlist(Collection <String> terms){
         String res="";

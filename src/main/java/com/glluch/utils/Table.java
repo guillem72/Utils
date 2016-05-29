@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
 import java.util.Set;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * A class for a matrix similar to a frame in R. All the values must be Double<br/>
@@ -26,6 +27,7 @@ public class Table {
         int i = 0;
         numCols = hs.size();
         for (String h : hs) {
+           // h=StringUtils.replaceChars(h, ",", "_");
             headers.put(h, i++);
         }
     }
@@ -46,6 +48,7 @@ public class Table {
      * @param id The name of the row.
      */
     public void addRow(String id) {
+       id=preRowName(id);
         matrix.put(++lastRow, Init.row(numCols));
         rowIds.put(id,lastRow);
     }
@@ -147,6 +150,7 @@ public class Table {
      */
     public boolean addVal(String id,String title, Double val) {
         boolean well = false;
+       id=preRowName(id);
         if (headers.containsKey(title) && rowIds.containsKey(id)) {
             well = true;
             int pos = headers.get(title);
@@ -160,6 +164,7 @@ public class Table {
     }
 
     public HashMap<Integer, Double> getRow(String id){
+        id=preRowName(id);
         if (rowIds.containsKey(id)){
         int row_pos=rowIds.get(id);
         return matrix.get(row_pos);
@@ -183,7 +188,11 @@ public class Table {
         return matrix;
     }
     
-   
+   private String preRowName(String name){
+   String res="";
+   res=name.replaceAll(",", "_");
+   return res;
+   }
   
   
 }
