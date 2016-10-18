@@ -15,6 +15,21 @@ public class Out {
     public static String sep=" ---> ";
     
     
+    public static String p(List<String[]> terms){
+    String res="";
+        int i=0;
+        for (String[] t:terms){
+            i++;
+            if (i==1) res+=System.lineSeparator();
+            for(int j=0; j<t.length;j++){
+                res+=" "+t[j];
+            }
+            res+=System.lineSeparator();
+        }
+         System.out.println(res);
+        return res;
+    }
+    
     public static String msas(Map<String, ArrayList<String>> map){
         String res="";
          Set keys=map.keySet();

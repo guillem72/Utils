@@ -24,4 +24,6 @@
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
     </properties>
+    <name>Utils</name>
+    <description>Several classes nedeed in diferent projects</description>
 </project>
