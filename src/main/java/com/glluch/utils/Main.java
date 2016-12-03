@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.glluch.utils;
 
 import java.io.IOException;
@@ -18,11 +14,25 @@ public class Main {
 
     public static void main(String[] args) throws IOException   {
     //name();
-    testcsvwrite();
+    //testcsvwrite();
     //testTable();
-    
+    //testOnlyName("/root/sincron/programacio/java/netbeans/moocsSolr/resources/courses/en/Principles of fMRI 2.json");
+        testCsvText();
      }
 
+    private static void testCsvText(){
+        String  hg="Hola a todos, menos a \\\"uno\\\"";
+        String algo="When presented with a problem from a scientific domain, a "
+                + "\"Computer Scientist\"    goes through a set of steps in order to provide a "
+                + "in the mathematical                                 concepts "
+                + "and process of \\\"Algorithmic Thinking\\\", "
+                + "allowing them to build simpler, more efficient solutions to computational "
+                + "problems.\n";
+    
+        Out.p(CsvWriter.csvText(algo));
+    
+    }
+    
     private static void name() {
             String fileName="/root/sincron/programacio/java/netbeans/moocsSolr/resources/courses/en/Aerodynamics | edX.html.json";
     String txt=Filename.nameWithoutExtension(fileName);
@@ -68,4 +78,8 @@ public class Main {
         cw.writeTableWithNames(table);
     }
     
+    
+    private static void testOnlyName(String path){
+        Out.p(Filename.OnlyName(path));
+    }
 }

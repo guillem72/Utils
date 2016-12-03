@@ -29,6 +29,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 
@@ -104,6 +106,19 @@ public class CsvWriter {
         FileUtils.write(target, row, true);
     }
 
+    public static String csvText(String text){
+        String res=StringUtils.replace(text, "\\\"", "'");
+        String MoreThanTwoSpaces="\\s+";
+        Pattern mtts = Pattern.compile(MoreThanTwoSpaces);
+        Matcher match=mtts.matcher(res);
+        res=match.replaceAll(" ");
+        //res=res.replaceAll("\\s\\s+", " ");//doesn't work
+        if (StringUtils.containsAny(res, "\"")) res=StringUtils.replace(res, "\"", "'");
+       
+        return res;
+    }
+    
+    
     public String getFileName() {
         return fileName;
     }
@@ -111,6 +126,8 @@ public class CsvWriter {
     public void setFileName(String fileName) {
         this.fileName = fileName;
     }
+    
+    
     
     
 }
