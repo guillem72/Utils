@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Stack;
 
 /**
  *
@@ -101,6 +102,16 @@ public class Out {
         }
         System.out.println(res);
         return res;
+    }
+    
+    public static void pS(Stack pila0){
+        Stack pila=(Stack) pila0.clone();
+        String mes="";
+        while (!pila.empty()) {
+            String s1 = pila.pop().toString();
+            mes+="\n"+s1;
+        }
+        Out.p(mes);
     }
     
     public static void p(Object o){
