@@ -14,7 +14,8 @@ import java.util.Stack;
  */
 public class Out {
     public static String sep=" ---> ";
-    
+    public static String csvSep=",";
+    public static final String eol=System.lineSeparator();
     
     public static String p(List<String[]> terms){
     String res="";
@@ -104,6 +105,37 @@ public class Out {
         return res;
     }
     
+    
+      public static String p(Map <String,Integer> map){
+        String res="";
+        
+        int i=0;
+        Set keys=map.keySet();
+        for (Object t0:keys){
+            String t=(String) t0;
+            i++;
+            if (i!=1) res+=System.lineSeparator();
+            res+=t+sep+map.get(t);
+        }
+        System.out.println(res);
+        return res;
+    }
+    
+    public static String csv(Map <String,Integer> map){
+    String res="";
+        
+        int i=0;
+        Set keys=map.keySet();
+        for (Object t0:keys){
+            String t=(String) t0;
+            i++;
+            if (i!=1) res+=System.lineSeparator();
+            res+=t+Out.csvSep+map.get(t);
+        }
+        System.out.println(res);
+        return res;
+    }
+      
     public static void pS(Stack pila0){
         Stack pila=(Stack) pila0.clone();
         String mes="";

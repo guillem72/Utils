@@ -21,20 +21,30 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package com.glluch.utils;
 
-import java.util.Map;
+import com.google.gson.FieldNamingPolicy;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import java.io.File;
+import java.io.IOException;
+import org.apache.commons.io.FileUtils;
 
 /**
  *
- * @author Guillem LLuch Moll
- * This class provides some methods to help in encoding and decoding json files. 
+ * @author Guillem LLuch Moll This class provides some methods to help in
+ * encoding and decoding json files.
  */
 public class Json {
-    
-   //json2csv
 
-    
-    
+    public static void writer(Object o, String fileName) throws IOException {
+        Gson gson = new GsonBuilder()
+			 .disableHtmlEscaping()
+			 .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
+			 .setPrettyPrinting()
+			 .create();
+        String ojson = gson.toJson(o);
+        FileUtils.writeStringToFile(new File(fileName), ojson);
+    }
+
 }
